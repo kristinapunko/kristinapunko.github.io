@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ggg</title>
+</head>
+<body>
+  <h1 id="title"></h1>
+
+  <button id="en">EN</button>
+  <button id="ua">UA</button>
+
+  <script>
+    const title = document.getElementById('title');
+    const uaBtn = document.getElementById('ua');
+    const enBtn = document.getElementById('en');
+    
+    function changeLanguage(lang, message) {
+      title.textContent = message;
+      localStorage.setItem('lang', lang);
+    }
+
+    const lang = localStorage.getItem('lang') || 'en';
+    if (lang === 'ua') {
+      changeLanguage('ua', 'Привіт, світе!');
+    } else {
+      changeLanguage('en', 'Hello, world!');
+    }
+
+    uaBtn.addEventListener('click', () => changeLanguage('ua', 'Привіт, світе!'));
+    enBtn.addEventListener('click', () => changeLanguage('en', 'Hello, world!'));
+  </script>
+</body>
+</html>

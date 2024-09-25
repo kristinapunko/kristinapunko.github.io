@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <style>
+        ul {
+            margin-top: 20px;
+            list-style-type: disc; 
+        }
+        li {
+            margin-top: 20px;
+        }
+        button {
+            background-color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            border: none;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+            border-radius: 5px;
+            margin-left: 5px;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My shopping List</h1>
+    
+    <p>Enter a new item 
+    <input type="text" id="input" placeholder="Enter item" />
+    <button onclick="Add()">Add Item</button></p>
+    <ul id="list"></ul>
+
+    <script>
+        function Add() {
+            const input = document.getElementById('input');
+            const text = input.value;
+            if (text === '') return;
+
+            const li = document.createElement('li');
+            li.textContent = text;
+
+            const del = document.createElement('button');
+            del.textContent = 'Delete';
+            del.onclick = function() {
+                if (confirm('Ви впевнені, що хочете видалити цей елемент?')) {
+                    li.remove();
+                }
+            };
+
+            const edit = document.createElement('button');
+            edit.textContent = 'Edit';
+            edit.onclick = function() {
+                const newText = prompt('Редагувати елемент:', text);
+                if (newText !== null && newText !== '') {
+                    li.firstChild.textContent = newText;
+                }
+            };
+
+            li.appendChild(edit);
+            li.appendChild(del);
+            document.getElementById('list').appendChild(li);
+
+            input.value = '';
+            input.focus();
+        }
+    </script>
+</body>
+</html>
