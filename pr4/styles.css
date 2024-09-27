@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    display: block;
+    justify-content: center; 
+    align-items: center; 
+    position: fixed;
+}
+
+.conteiner{
+    border: 2px solid #000000;  
+    border-bottom: none; 
+}
+
+h1 {
+    text-align: center;
+}
+
+#task {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+#task, .task-item {
+    border-bottom: 2px solid #000000;
+} 
+
+#list {
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.task-item .delete {
+    color: red;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid red;
+    border-radius: 30px;
+}
