@@ -1,4 +1,6 @@
 let watchId = null;
+let map;
+let markers = [];
 
 document.addEventListener('DOMContentLoaded', getMyLocation)
 function getMyLocation() {
@@ -20,7 +22,20 @@ function displayLocation (position) {
     distance.innerHTML = `You are ${km} km from the College`;
     let kmToVerhovnaRada = computeDistance(position.coords, verhovnaRada); 
     let distanceToVerhovnaRada = document.getElementById("distanceToVerhovnaRada");
-    distanceToVerhovnaRada.innerHTML = `You are ${kmToVerhovnaRada} km from the College`;
+    distanceToVerhovnaRada.innerHTML = `You are ${kmToVerhovnaRada} km from the Verhovna Rada`;
+
+        // Ініціалізуємо карту та задаємо центр і масштаб
+    if (!map) {
+        map = L.map('map').setView([latitude, longitude], 13); // Використовуємо отримані координати
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+    } else {
+        map.setView([latitude, longitude]); // Оновлюємо позицію карти при зміні координат
+    }
+    let marker = L.marker([latitude, longitude]).addTo(map);
+    let currentTime = new Date().toLocaleString(); 
+    marker.bindPopup(`You are here: ${latitude}, ${longitude}`).openPopup(); // Інформаційне вікно
+    markers.push(marker);
 }
 
 function getMyLocation() {
@@ -88,3 +103,30 @@ function degreesToRadians (degrees) {
 
     return radians;
 }
+
+let destinationCoords = null; // Змінна для зберігання координат пункту призначення
+
+// Додаємо обробник події для кнопки "Додати маркер"
+document.getElementById("addMarker").onclick = function() {
+    let destLatitude = parseFloat(document.getElementById("destLatitude").value);
+    let destLongitude = parseFloat(document.getElementById("destLongitude").value);
+    
+    if (!isNaN(destLatitude) && !isNaN(destLongitude)) {
+        let destinationMarker = L.marker([destLatitude, destLongitude]).addTo(map);
+        destinationMarker.bindPopup(`Destination: ${destLatitude}, ${destLongitude}`).openPopup();
+    
+        map.setView([destLatitude, destLongitude], 13);
+        
+        destinationCoords = { latitude: destLatitude, longitude: destLongitude };
+    } else {
+        alert("Enter the correct coordinates");
+    }
+};
+
+document.getElementById("scrollToDestination").onclick = function() {
+    if (destinationCoords) {
+        map.setView([destinationCoords.latitude, destinationCoords.longitude], 13); // Прокрутка до збережених координат
+    } else {
+        alert("Add new marker");
+    }
+};
