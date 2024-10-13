@@ -1,58 +1,86 @@
 let watchId = null;
 let map;
 let markers = [];
+let destinationCoords = null; 
 
-document.addEventListener('DOMContentLoaded', getMyLocation)
-function getMyLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition (displayLocation)
-    } else {
-        alert("Oops, no geolocation support")
-    }
-}
+document.addEventListener('DOMContentLoaded', function() {
+    getMyLocation();
 
-function displayLocation (position) {
-    let latitude = position.coords.latitude
-    let longitude = position.coords.longitude
-    let div = document.getElementById("location")
-    div.innerHTML = `You are at Latitude: ${latitude}, Longitude: ${longitude}`;
-    div.innerHTML += `(with ${position.coords.accuracy} meters accuracy)`
-    let km = computeDistance(position.coords, ourCoords); 
-    let distance = document.getElementById("distance");
-    distance.innerHTML = `You are ${km} km from the College`;
-    let kmToVerhovnaRada = computeDistance(position.coords, verhovnaRada); 
-    let distanceToVerhovnaRada = document.getElementById("distanceToVerhovnaRada");
-    distanceToVerhovnaRada.innerHTML = `You are ${kmToVerhovnaRada} km from the Verhovna Rada`;
+    document.getElementById("addMarker").onclick = function() {
+        let destLatitude = parseFloat(document.getElementById("destLatitude").value);
+        let destLongitude = parseFloat(document.getElementById("destLongitude").value);
 
-        // Ініціалізуємо карту та задаємо центр і масштаб
-    if (!map) {
-        map = L.map('map').setView([latitude, longitude], 13); // Використовуємо отримані координати
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-    } else {
-        map.setView([latitude, longitude]); // Оновлюємо позицію карти при зміні координат
-    }
-    let marker = L.marker([latitude, longitude]).addTo(map);
-    let currentTime = new Date().toLocaleString(); 
-    marker.bindPopup(`You are here: ${latitude}, ${longitude}`).openPopup(); // Інформаційне вікно
-    markers.push(marker);
-}
+        if (!isNaN(destLatitude) && !isNaN(destLongitude)) {
+            let destinationMarker = L.marker([destLatitude, destLongitude]).addTo(map);
+            destinationMarker.bindPopup(`Destination: ${destLatitude}, ${destLongitude}`).openPopup();
+
+            map.setView([destLatitude, destLongitude], 13);
+
+            destinationCoords = { latitude: destLatitude, longitude: destLongitude };
+        } else {
+            alert("Enter the correct coordinates");
+        }
+    };
+
+    document.getElementById("scrollToDestination").onclick = function() {
+        if (destinationCoords) {
+            map.setView([destinationCoords.latitude, destinationCoords.longitude], 13);
+        } else {
+            alert("Add new marker");
+        }
+    };
+});
 
 function getMyLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition (displayLocation, displayError);
+        navigator.geolocation.getCurrentPosition(displayLocation, displayError);
         var watchButton = document.getElementById("watch");
-        watchButton.onclick = watchLocation;
+        if (watchButton) {
+            watchButton.onclick = watchLocation;
+        }
         var clearWatchButton = document.getElementById("clearWatch");
-        clearWatchButton.onclick = clearWatch;
+        if (clearWatchButton) {
+            clearWatchButton.onclick = clearWatch;
+        }
     } else {
         alert("Oops, no geolocation support");
     }
+}
+
+function displayLocation(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let div = document.getElementById("location");
+    div.innerHTML = `You are at Latitude: ${latitude}, Longitude: ${longitude}`;
+    div.innerHTML += `(with ${position.coords.accuracy} meters accuracy)`;
+    
+    let km = computeDistance(position.coords, ourCoords);
+    let distance = document.getElementById("distance");
+    distance.innerHTML = `You are ${km} km from the College`;
+
+    let kmToVerhovnaRada = computeDistance(position.coords, verhovnaRada);
+    let distanceToVerhovnaRada = document.getElementById("distanceToVerhovnaRada");
+    distanceToVerhovnaRada.innerHTML = `You are ${kmToVerhovnaRada} km from the Verhovna Rada`;
+
+    if (!map) {
+        map = L.map('map').setView([latitude, longitude], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    } else {
+        map.setView([latitude, longitude]);
     }
 
-function watchLocation() {
-    watchId = navigator.geolocation.watchPosition(displayLocation, displayErгог);
+    let marker = L.marker([latitude, longitude]).addTo(map);
+    let currentTime = new Date().toLocaleString();
+    marker.bindPopup(`You are here: ${latitude}, ${longitude}`).openPopup();
+    markers.push(marker);
 }
+
+function watchLocation() {
+    watchId = navigator.geolocation.watchPosition(displayLocation, displayError);
+}
+
 function clearWatch() {
     if (watchId) {
         navigator.geolocation.clearWatch(watchId);
@@ -61,11 +89,11 @@ function clearWatch() {
 }
 
 let ourCoords = {
-    latitude: 48.94439584358175, 
+    latitude: 48.94439584358175,
     longitude: 24.73210983068624
 };
 let verhovnaRada = {
-    latitude: 50.440900495208155, 
+    latitude: 50.440900495208155,
     longitude: 30.574719901873927
 };
 
@@ -76,57 +104,28 @@ function displayError(error) {
         2: "Position is not available",
         3: "Request timed out"
     };
-    const errorMessage = errorTypes [error.code];
-    if (error.code === 0 || error.code === 2) { 
-        errorMessage = errorMessage + ""+ error.message;
+    let errorMessage = errorTypes[error.code];
+    if (error.code === 0 || error.code === 2) {
+        errorMessage += `: ${error.message}`;
     }
     let div = document.getElementById("location");
     div.innerHTML = errorMessage;
 }
 
 function computeDistance(startCoords, destCoords) {
-    let startLatRads = degreesToRadians(startCoords.latitude); 
+    let startLatRads = degreesToRadians(startCoords.latitude);
     let startLongRads = degreesToRadians(startCoords.longitude);
     let destLatRads = degreesToRadians(destCoords.latitude);
     let destLongRads = degreesToRadians(destCoords.longitude);
     
-    let Radius = 6371; // Earth's radius in km
-    
+    let Radius = 6371; // Радіус Землі в км
     let distance = Math.acos(Math.sin(startLatRads) * Math.sin(destLatRads) +
         Math.cos(startLatRads) * Math.cos(destLatRads) *
         Math.cos(startLongRads - destLongRads)) * Radius;
-    
+
     return distance;
 }
-function degreesToRadians (degrees) {
-    let radians = (degrees * Math.PI)/180;
 
-    return radians;
+function degreesToRadians(degrees) {
+    return (degrees * Math.PI) / 180;
 }
-
-let destinationCoords = null; // Змінна для зберігання координат пункту призначення
-
-// Додаємо обробник події для кнопки "Додати маркер"
-document.getElementById("addMarker").onclick = function() {
-    let destLatitude = parseFloat(document.getElementById("destLatitude").value);
-    let destLongitude = parseFloat(document.getElementById("destLongitude").value);
-    
-    if (!isNaN(destLatitude) && !isNaN(destLongitude)) {
-        let destinationMarker = L.marker([destLatitude, destLongitude]).addTo(map);
-        destinationMarker.bindPopup(`Destination: ${destLatitude}, ${destLongitude}`).openPopup();
-    
-        map.setView([destLatitude, destLongitude], 13);
-        
-        destinationCoords = { latitude: destLatitude, longitude: destLongitude };
-    } else {
-        alert("Enter the correct coordinates");
-    }
-};
-
-document.getElementById("scrollToDestination").onclick = function() {
-    if (destinationCoords) {
-        map.setView([destinationCoords.latitude, destinationCoords.longitude], 13); // Прокрутка до збережених координат
-    } else {
-        alert("Add new marker");
-    }
-};
