@@ -1,47 +1,48 @@
 let watchId = null;
 let map;
 let markers = [];
-let destinationCoords = null; 
+let destinationCoords = null; // Змінна для зберігання координат пункту призначення
 
 document.addEventListener('DOMContentLoaded', function() {
     getMyLocation();
 
-    document.getElementById("addMarker").onclick = function() {
-        let destLatitude = parseFloat(document.getElementById("destLatitude").value);
-        let destLongitude = parseFloat(document.getElementById("destLongitude").value);
+    // Перевіряємо існування елементів
+    const addMarkerButton = document.getElementById("addMarker");
+    const scrollToDestinationButton = document.getElementById("scrollToDestination");
 
-        if (!isNaN(destLatitude) && !isNaN(destLongitude)) {
-            let destinationMarker = L.marker([destLatitude, destLongitude]).addTo(map);
-            destinationMarker.bindPopup(`Destination: ${destLatitude}, ${destLongitude}`).openPopup();
+    if (addMarkerButton && scrollToDestinationButton) {
+        // Обробники подій для кнопок
+        addMarkerButton.onclick = function() {
+            let destLatitude = parseFloat(document.getElementById("destLatitude").value);
+            let destLongitude = parseFloat(document.getElementById("destLongitude").value);
 
-            map.setView([destLatitude, destLongitude], 13);
+            if (!isNaN(destLatitude) && !isNaN(destLongitude)) {
+                let destinationMarker = L.marker([destLatitude, destLongitude]).addTo(map);
+                destinationMarker.bindPopup(`Destination: ${destLatitude}, ${destLongitude}`).openPopup();
 
-            destinationCoords = { latitude: destLatitude, longitude: destLongitude };
-        } else {
-            alert("Enter the correct coordinates");
-        }
-    };
+                map.setView([destLatitude, destLongitude], 13);
 
-    document.getElementById("scrollToDestination").onclick = function() {
-        if (destinationCoords) {
-            map.setView([destinationCoords.latitude, destinationCoords.longitude], 13);
-        } else {
-            alert("Add new marker");
-        }
-    };
+                destinationCoords = { latitude: destLatitude, longitude: destLongitude };
+            } else {
+                alert("Enter the correct coordinates");
+            }
+        };
+
+        scrollToDestinationButton.onclick = function() {
+            if (destinationCoords) {
+                map.setView([destinationCoords.latitude, destinationCoords.longitude], 13); // Прокрутка до збережених координат
+            } else {
+                alert("Add new marker");
+            }
+        };
+    } else {
+        console.error("Elements 'addMarker' or 'scrollToDestination' not found.");
+    }
 });
 
 function getMyLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(displayLocation, displayError);
-        var watchButton = document.getElementById("watch");
-        if (watchButton) {
-            watchButton.onclick = watchLocation;
-        }
-        var clearWatchButton = document.getElementById("clearWatch");
-        if (clearWatchButton) {
-            clearWatchButton.onclick = clearWatch;
-        }
     } else {
         alert("Oops, no geolocation support");
     }
@@ -77,41 +78,6 @@ function displayLocation(position) {
     markers.push(marker);
 }
 
-function watchLocation() {
-    watchId = navigator.geolocation.watchPosition(displayLocation, displayError);
-}
-
-function clearWatch() {
-    if (watchId) {
-        navigator.geolocation.clearWatch(watchId);
-        watchId = null;
-    }
-}
-
-let ourCoords = {
-    latitude: 48.94439584358175,
-    longitude: 24.73210983068624
-};
-let verhovnaRada = {
-    latitude: 50.440900495208155,
-    longitude: 30.574719901873927
-};
-
-function displayError(error) {
-    const errorTypes = {
-        0: "Unknown error",
-        1: "Permission denied by user",
-        2: "Position is not available",
-        3: "Request timed out"
-    };
-    let errorMessage = errorTypes[error.code];
-    if (error.code === 0 || error.code === 2) {
-        errorMessage += `: ${error.message}`;
-    }
-    let div = document.getElementById("location");
-    div.innerHTML = errorMessage;
-}
-
 function computeDistance(startCoords, destCoords) {
     let startLatRads = degreesToRadians(startCoords.latitude);
     let startLongRads = degreesToRadians(startCoords.longitude);
@@ -128,4 +94,19 @@ function computeDistance(startCoords, destCoords) {
 
 function degreesToRadians(degrees) {
     return (degrees * Math.PI) / 180;
+}
+
+function displayError(error) {
+    const errorTypes = {
+        0: "Unknown error",
+        1: "Permission denied by user",
+        2: "Position is not available",
+        3: "Request timed out"
+    };
+    let errorMessage = errorTypes[error.code];
+    if (error.code === 0 || error.code === 2) {
+        errorMessage += `: ${error.message}`;
+    }
+    let div = document.getElementById("location");
+    div.innerHTML = errorMessage;
 }
