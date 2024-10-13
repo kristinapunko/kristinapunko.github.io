@@ -4,6 +4,13 @@
         <meta charset = 'utf-8'>
         <title>Wherever you go, there you are</title>
     </head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 500px; 
+            width: 100%;  
+        }
+    </style>
 <body>
     <form>
         <input type="button" id="watch" value="Watch me">
@@ -18,6 +25,19 @@
     <div id="distanceToVerhovnaRada">
         Distance from VerhovnaRada will go here.
     </div>
+    <div id="map"></div>
+    <div>
+        <h3>Enter the coordinates of the destination:</h3>
+        <label for="destLatitude">Latitude:</label>
+        <input type="number" id="destLatitude" step="0.000001"><br>
+        <label for="destLongitude">Longitude:</label>
+        <input type="number" id="destLongitude" step="0.000001"><br>
+        <button id="addMarker">Add marker</button>
+        <button id="scrollToDestination">Skroll to destination</button> 
+    </div>
+    <div id="map" style="height: 400px;"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src ="myLoc.js"></script>
 </body>
 </html>
