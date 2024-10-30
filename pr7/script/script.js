@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadLanguage(lang) {
         try {
             // If you use VS Code's LiveServer, you can make a local request:
-            const response = await fetch(`/locales/${lang}.json`);
+            //const response = await fetch(`/locales/${lang}.json`);
 
             // If you don’t use LiveServer, upload your "locales" directory to GitHub
             // and organize the request for GitHub Pages:
-            // const response = await fetch(`https://username.github.io/locales/${lang}.json`);
+            const response = await fetch(`https://kristinapunko.github.io/locales/${lang}.json`);
 
             translations = await response.json();
             updateText();
