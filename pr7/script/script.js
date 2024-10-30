@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // If you don’t use LiveServer, upload your "locales" directory to GitHub
             // and organize the request for GitHub Pages:
-            const response = await fetch(`https://kristinapunko.github.io/locales/${lang}.json`);
+            const response = await fetch(`https://kristinapunko.github.io/pr7/locales/${lang}.json`);
 
             translations = await response.json();
             updateText();
