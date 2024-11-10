@@ -1,0 +1,70 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Canon EOS 2000D BK 18-55 DC III",
+            "category": "DSLR",
+            "price": 16499,
+            "oldPrice": 20999,
+            "link": "https://rozetka.com.ua/canon_2728c007aa/p61658924/",
+            "image": "images/1.png",
+            "badge": "best seller",
+            "available": true
+        },
+        {
+            "id": 2,
+            "name": "Fujifilm X-T5 + XF 16-80mm F4 Kit Black",
+            "category": "mirrorless",
+            "price": 110999,
+            "oldPrice": null,
+            "link": "https://rozetka.com.ua/fujifilm-16782571/p417700275/",
+            "image": "images/2.png",
+            "badge": null,
+            "available": true
+        },
+        {
+            "id": 3,
+            "name": "Canon Powershot G7 X Mark III Black",
+            "category": "compact",
+            "price": 36999,
+            "oldPrice": null,
+            "link": "https://rozetka.com.ua/canon_3637c013/p130637631/",
+            "image": "images/3.png",
+            "badge": null,
+            "available": false
+        },
+        {
+            "id": 4,
+            "name": "Polaroid Now + Gen 2 Black",
+            "category": "instant",
+            "price": 7499,
+            "oldPrice": 8999,
+            "link": "https://rozetka.com.ua/polaroid-009076/p370952316/",
+            "image": "images/4.png",
+            "badge": "new",
+            "available": true
+        },
+        {
+            "id": 5,
+            "name": "Nikon D750 Body",
+            "category": "DSLR",
+            "price": 42523,
+            "oldPrice": null,
+            "link": "https://rozetka.com.ua/nikon_d750_body/p1693562/",
+            "image": "images/5.png",
+            "badge": null,
+            "available": false
+        },
+        {
+            "id": 6,
+            "name": "Canon EOS 4000D BK 18-55",
+            "category": "DSLR",
+            "price": 16499,
+            "oldPrice": 17999,
+            "link": "https://rozetka.com.ua/canon_3011c004aa/p40130120/",
+            "image": "images/6.png",
+            "badge": "top seller",
+            "available": true
+        }
+    ]
+}
