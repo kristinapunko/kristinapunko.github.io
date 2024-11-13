@@ -1,196 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+    <title>Shop</title>
+    <link rel="stylesheet" href="ss.css">
 </head>
 <body>
-<header id="home">
-	<img src="" alt="" class="img">
-	<div class="header-block">
-		<div class="overlay"></div>
-		<header>
-			<div class="content-wrap d-flex">
-				<div class="logo">
-					Portofolio
-				</div>
-				<nav class='main-menu'>
-					<div id='iconWrap' class="icons">
-						<i id='iconOpen' class="fa-solid fa-bars"></i>
-						<i id='iconClose' class="fa-solid fa-xmark hide"></i>
-					</div>
-
-					<ul id='mainMenu' class='menu-list hide-menu'>
-						<li>
-							<a href="#" id="Home"  class="active">
-								Home
-							</a>
-						</li>
-
-						<li>
-							<a href="#" id="About">
-								About
-							</a>
-						</li>
-						<li>
-							<a href="#" id="Skills">
-								Skills
-							</a>
-						</li>
-						<li>
-							<a href="#" id="Portfolio">
-								Portfolio
-							</a>
-						</li>
-						<li>
-							<a href="#" id="Contact">
-								Contact
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-			<div class="hed ">
-                <h1>Hi, It's Punko Khrystyna</h1>
-                <p class="p">Designer from Ivano-Frankivsk, Ukraine</p>
-                <a class="a" href="pr1\index.html">Latest works</a>
-            </div>
+    <div>
+        <h1 id="greeting"></h1>
     </div>
-</header>
-	<div class="conteiner"  id="about">
-		<h2>About</h2>
-		<p>I am a junior Front-end Developer currently deepening my knowledge in HTML, CSS, and JavaScript. I am 
-			actively working on various mini-projects to gain hands-on experience and enhance my skills. Additionally, I am 
-			proficient in Adobe Photoshop, Adobe Illustrator, and Figma, which allows me to integrate design and development seamlessly.<br><br>
-			Additionally, I am proficient in Adobe Photoshop, Adobe Illustrator, and Figma, which enables me to create and design visually appealing 
-			user interfaces. Also, I am improving my English language proficiency every day.My goal is to build responsive, user-friendly web applications 
-			while continuously improving my technical skills and staying updated with industry trends.</p>
-	</div>
-    <div class="full-width-background" id="skills">
-        <div class="conteiner">
-            <h2>Skills</h>
-			<div class="grid-container">
-				<div class="position">
-					<img src="i.png" alt="foto">
-				</div>
-				<div class="profile">
-					<h5 class="p text">Profile</h5>
-					<p class="text-knowledge">Front-end Developer</p>
-					<p class="p text">English</p>
-					<div class="skill"><div class="bar"><div class="level" style="width: 80%;"></div></div></div>
-					<p class="p text">Tools</p>
-					<p class="text-knowledge">Grammar (B2), Listening (B2), Speaking (B1+)</p>
-					<p class="p text">UI Design</p>
-					<div class="skill"><div class="bar"><div class="level" style="width: 70%;"></div></div></div>
-					<p class="p text">Tools</p>
-					<p class="text-knowledge">Adobe Photoshop, Adobe Illustrator, Figma</p>
-					<p class="p text">Front-end Dev</p>
-					<div class="skill"><div class="bar"><div class="level" style="width: 60%;"></div></div></div>
-					<p class="p text">Tools</p>
-					<p class="text-knowledge">HTML, CSS, JavaScript, Bootstrap</p>
-				</div>
 
-			</div>
+    <select id="language-selector">
+        <option value="en">English</option>
+        <option value="uk">Українська</option>
+    </select>
+    
+    <div class="swiper-button-next swipe swiper-right"></div>
+    <div class="swiper-button-prev swipe swiper-left"></div>
+    <div class="swiper-container swiper">
+        <div class="swiper-wrapper" id="product-container">
+
+            <div class="swiper-slide">
+                <div class="container">
+                    <a href="" id="categoryhref"><h3 class="category"></h3></a>
+                    <hr>
+                    <a href="" class="img"><img src="" alt="Product Image"></a>
+                    <a href="" class="product-title"></a>
+                    <p class="price">
+                        <small> </small>
+                        <h4 class="h4"></h4>
+                    </p>
+                    <button></button>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="container">
+                    <a href="" id="categoryhref"><h3 class="category"></h3></a>
+                    <hr>
+                    <a href="" class="img"><img src="" alt="Product Image"></a>
+                    <a href="" class="product-title"></a>
+                    <p class="price">
+                        <small> </small>
+                        <h4 class="h4"></h4>
+                    </p>
+                    <button></button>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="container">
+                    <a href="" id="categoryhref"><h3 class="category"></h3></a>
+                    <hr>
+                    <a href="" class="img"><img src="" alt="Product Image"></a>
+                    <a href="" class="product-title"></a>
+                    <p class="price">
+                        <small> </small>
+                        <h4 class="h4"></h4>
+                    </p>
+                    <button></button>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="container">
+                    <a href="" id="categoryhref"><h3 class="category"></h3></a>
+                    <hr>
+                    <a href="" class="img"><img src="" alt="Product Image"></a>
+                    <a href="" class="product-title"></a>
+                    <p class="price">
+                        <small> </small>
+                        <h4 class="h4"></h4>
+                    </p>
+                    <button></button>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="container">
+                    <a href="" id="categoryhref"><h3 class="category"></h3></a>
+                    <hr>
+                    <a href="" class="img"><img src="" alt="Product Image"></a>
+                    <a href="" class="product-title"></a>
+                    <p class="price">
+                        <small> </small>
+                        <h4 class="h4"></h4>
+                    </p>
+                    <button></button>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="container">
+                    <a href="" id="categoryhref"><h3 class="category"></h3></a>
+                    <hr>
+                    <a href="" class="img"><img src="" alt="Product Image"></a>
+                    <a href="" class="product-title"></a>
+                    <p class="price">
+                        <small> </small>
+                        <h4 class="h4"></h4>
+                    </p>
+                    <button></button>
+                </div>
+            </div>
         </div>
     </div>
-	<div class="conteiner conteiner1" id="portfolio">
-		<h2>Portfolio</h2>
-		<p class="t text1" >UX Research</p>
-		<div class="profile profile1">
-			<p class="text1" >View a curated selection of my work, that <br>
-				illustrate my expertise in HTML, CSS, <br>
-				JavaScript in front-end development and UI<br> 
-				design, demonstrating my ability to build and <br>
-				design responsive, user-centric websites.</p>
-				<div class="profile-container">
-					<div class="profile w">
-						<img src="f1.png" class="foto1">
-						<img src="f2.png" class="foto2">
-						<img src="f3.png" class="foto1 foto-position">
-						<img src="f4.png" class="foto2">
-					</div>
-				</div>
-				
-			<div class="profile" ><img src="r (2).png" class="foto3"><img src="r (1).png" class="foto3"></div>
-		</div>
-	</div>
-	<div class="conteiner">
-		<h2>My project</h2>
-		<div><a class="a1" href="pr3\index.html">Practical work 3</a></div>
-		<div><a class="a1" href="pr4\index.html">Practical work 4</a></div>
-		<div><a class="a1" href="pr5\myLoc.html">Practical work 5</a></div>
-		<div><a class="a1" href="pr_JSON\heroes.html">Practical work 6</a></div>
-		<div><a class="a1" href="pr7\index.html">Practical work 7 (ex1)</a></div>
-		<div><a class="a1" href="ex2\index.html">Practical work 7 (ex2)</a></div>
-		<div><a class="a1" href="Pr8\index.html">Practical work 8</a></div>
-	</div>
-	<footer id="contact">
-		<div class="full-width-background">
-			<div class="conteiner">
-				<h2>Get in Touch</h2>
-				<div class="grid-container2 ul">
-					<ul >
-						<li>
-							<a href="#">
-								Dribbble
-							</a>
-						</li>
 
-						<li>
-							<a href="#">
-								Behance
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								CodePen
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								GitHub
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								Medium
-							</a>
-						</li>
-					</ul>
-					<ul >
-						<li>
-							<a href="#">
-								LinkedIn
-							</a>
-						</li>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-						<li>
-							<a href="#">
-								Facebook
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								Instagram
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								Twitter
-							</a>
-						</li>
-					</ul>
-
-					<div class="grid-container2"><p class="text1 text2">khrystyna.ki2101@kep.nung.edu.ua<br>+ 55 6645 665544</p>
-					<img src="u.png" class="f4"></div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	
+<script src='script/script.js'></script>
 </body>
-	<script src='script.js'></script>
 </html>
