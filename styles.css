@@ -237,13 +237,7 @@ header .content-wrap .logo {
     height: 20px;
 	background: #C66C49;
 }
-.skills {
-    width: 100%;
-    margin: 50px auto;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
 .foto1, .foto2 {
     height: auto;
     object-fit: cover; 
@@ -404,11 +398,6 @@ header .content-wrap .logo {
 	}
 	.text-knowledge{
 		margin: 0;
-	}
-	.skills {
-		width: 100%;
-		margin: 50px auto;
-		padding: 10px;
 	}
 	.bar {
 		width: 100%;

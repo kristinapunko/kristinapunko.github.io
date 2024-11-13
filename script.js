@@ -12,14 +12,13 @@ iconWrap.addEventListener('click',() => {
 })
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Отримуємо елементи за їхніми ID
+    
     const Home = document.getElementById("Home");
     const About = document.getElementById("About");
     const Skills = document.getElementById("Skills");
     const Portfolio = document.getElementById("Portfolio");
     const Contact = document.getElementById("Contact");
 
-    // Додаємо обробники подій для кожної секції
     Home.addEventListener("click", function() {
         document.getElementById("home").scrollIntoView({ behavior: "smooth" });
     });
