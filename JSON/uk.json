@@ -1,8 +1,8 @@
 [
     {
-        "id": 1,
         "name": "Canon EOS 2000D BK 18-55 DC III",
-        "category": "Дзеркальні",
+        "category": "дзеркальні",
+        "categoryhref": "https://rozetka.com.ua/photo/c80001/23389=dslr/",
         "price": 16499,
         "oldPrice": 20999,
         "link": "https://rozetka.com.ua/canon_2728c007aa/p61658924/",
@@ -11,9 +11,9 @@
         "available": true
     },
     {
-        "id": 2,
         "name": "Камера Fujifilm X-T5 + XF 16-80mm F4 Kit Black",
         "category": "бездзеркальні",
+        "categoryhref": "https://rozetka.com.ua/photo/c80001/23389=removable_lens/",
         "price": 110999,
         "oldPrice": null,
         "link": "https://rozetka.com.ua/fujifilm-16782571/p417700275/",
@@ -22,9 +22,9 @@
         "available": true
     },
     {
-        "id": 3,
         "name": "Canon Powershot G7 X Mark III Black",
         "category": "компактний",
+        "categoryhref": "https://rozetka.com.ua/photo/c80001/23389=compact/",
         "price": 36999,
         "oldPrice": null,
         "link": "https://rozetka.com.ua/canon_3637c013/p130637631/",
@@ -33,9 +33,9 @@
         "available": false
     },
     {
-        "id": 4,
         "name": "Polaroid Now + Gen 2 Black",
         "category": "миттєві",
+        "categoryhref": "https://rozetka.com.ua/photo/c80001/23389=mgnovennoy-pechati/",
         "price": 7499,
         "oldPrice": 8999,
         "link": "https://rozetka.com.ua/polaroid-009076/p370952316/",
@@ -44,9 +44,9 @@
         "available": true
     },
     {
-        "id": 5,
         "name": "Nikon D750 Body",
-        "category": "Дзеркальні",
+        "category": "дзеркальні",
+        "categoryhref": "https://rozetka.com.ua/photo/c80001/23389=dslr/",
         "price": 42523,
         "oldPrice": null,
         "link": "https://rozetka.com.ua/nikon_d750_body/p1693562/",
@@ -55,9 +55,9 @@
         "available": false
     },
     {
-        "id": 6,
         "name": "Canon EOS 4000D BK 18-55",
-        "category": "Дзеркальні",
+        "category": "дзеркальні",
+        "categoryhref": "https://rozetka.com.ua/photo/c80001/23389=dslr/",
         "price": 16499,
         "oldPrice": 17999,
         "link": "https://rozetka.com.ua/canon_3011c004aa/p40130120/",
