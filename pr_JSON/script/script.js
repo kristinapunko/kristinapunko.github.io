@@ -31,7 +31,6 @@ i18next.init({
 }, function (err, t) {
     if (err) return console.error(err);
     fetchSuperheroData(i18next.language);
-    updateContent();
 });
 
 function fetchSuperheroData(language) {
@@ -46,10 +45,6 @@ function fetchSuperheroData(language) {
         populateHeader(superHeroes);
         showHeroes(superHeroes);
     }
-}
-
-function updateContent() {
-    document.getElementById('greeting').textContent = i18next.t('greeting');
 }
 
 function populateHeader(superHeroes) {
@@ -94,7 +89,6 @@ function showHeroes(superHeroes) {
 document.getElementById('language-selector').addEventListener('change', function () {
     const selectedLanguage = this.value;
     i18next.changeLanguage(selectedLanguage, function() {
-        updateContent();
         fetchSuperheroData(selectedLanguage); 
     });
 });
