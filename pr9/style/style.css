@@ -148,6 +148,18 @@ small {
     font-size: 20px;
 
 }
+@media (max-width: 2200px) {
+
+    .swiper-left{
+        left: 140px;
+
+        }
+    .swiper-right{
+        right: 140px;
+
+        }
+
+}
 @media (max-width: 1700px) {
 
     .swiper-left{
