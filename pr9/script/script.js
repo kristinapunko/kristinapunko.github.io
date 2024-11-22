@@ -55,6 +55,7 @@ const storedLanguage = localStorage.getItem('language') || 'en';
         resources
     }, function (err, t) {
         if (err) return console.error(err);
+        updateContent();
         fetchSuperheroData(i18next.language);
     });
 
@@ -114,11 +115,16 @@ const storedLanguage = localStorage.getItem('language') || 'en';
 
         swiper.update(); 
     }
+      function updateContent() {
+            document.getElementById('greeting').textContent = i18next.t('greeting');
+    }
+
 
     document.getElementById('language-selector').addEventListener('change', function () {
         const selectedLanguage = this.value;
         i18next.changeLanguage(selectedLanguage, function() {
             localStorage.setItem('language', selectedLanguage);
+            updateContent();
             fetchSuperheroData(selectedLanguage);
         });
     });
