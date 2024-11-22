@@ -115,10 +115,10 @@ const storedLanguage = localStorage.getItem('language') || 'en';
 
         swiper.update(); 
     }
-      function updateContent() {
-            document.getElementById('greeting').textContent = i18next.t('greeting');
-    }
 
+    function updateContent() {
+        document.getElementById('greeting').textContent = i18next.t('greeting');
+    }
 
     document.getElementById('language-selector').addEventListener('change', function () {
         const selectedLanguage = this.value;

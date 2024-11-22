@@ -133,11 +133,11 @@ small {
     z-index: 2;
 }
 .swiper-left{
-    left: 90px;
+    left: 170px;
 
     }
 .swiper-right{
-    right: 90px;
+    right: 170px;
 
     }
 
@@ -148,7 +148,18 @@ small {
     font-size: 20px;
 
 }
+@media (max-width: 1700px) {
 
+    .swiper-left{
+        left: 90px;
+
+        }
+    .swiper-right{
+        right: 90px;
+
+        }
+
+}
 @media (max-width: 1380px) {
     h1{
         font-size: 18px;
