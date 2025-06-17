@@ -81,9 +81,7 @@ const Booking = () => {
 
     return (
         <div className="container max-w-8xl mx-auto my-6 px-4">
-            <h1 className="text-3xl font-bold text-[#361d32] text-left mb-8">
-                Ваші бронювання
-            </h1>
+            <h1 className="capitalize text-[#361d32] text-xl lg:text-3xl font-semibold mb-6">Ваші бронювання</h1>
             
             <div className="space-y-6">
                 {bookings.map((booking) => {
@@ -93,15 +91,15 @@ const Booking = () => {
                     return (
                         <div
                             key={booking.id}
-                            className="p-6 bg-white rounded-2xl border border-[#f1e8e6] shadow-sm hover:shadow-md transition-all"
+                            className="p-3 md:p-6 bg-white rounded-2xl border border-[#f1e8e6] shadow-sm hover:shadow-md transition-all"
                         >
-                            <div className="flex flex-col lg:flex-row gap-6">
+                            <div className="flex flex-col lg:flex-row gap-3 md:gap-6">
                                 <div className="lg:w-1/2 flex flex-col">
                                     <div className="flex justify-between items-start mb-4">
-                                        <h2 className="text-xl font-bold text-[#361d32]">
+                                        <h2 className="text-lg md:text-xl font-bold text-[#361d32]">
                                             {booking.tour_name}
                                         </h2>
-                                        <span className={`px-3 py-1 rounded-full text-sm ${
+                                        <span className={`px-3 py-1 rounded-full text-xs md:text-sm ${
                                             booking.status === 'pending' 
                                                 ? 'bg-amber-100 text-amber-800' 
                                                 : booking.status === 'confirmed' 
@@ -142,7 +140,7 @@ const Booking = () => {
                                         </Link>
                                                                             </div>
     
-                                    <div className="mt-6 pt-4 border-t border-[#f1e8e6]">
+                                    <div className="mt-3 md:mt-6 pt-4 border-t border-[#f1e8e6]">
                                         <p className="text-sm text-[#543c52] italic mb-4">
                                             Скасування можливе за 14 днів до початку туру
                                         </p>
@@ -169,7 +167,7 @@ const Booking = () => {
 
                                 <div className="lg:w-1/2">
                                     {details?.photos?.length > 0 ? (
-                                        <div className="relative h-64 w-full overflow-hidden rounded-xl">
+                                        <div className="relative h-36 md:h-64 w-full overflow-hidden rounded-xl">
                                             <img
                                                 className="w-full h-full object-cover transition-transform hover:scale-105"
                                                 src={details.photos[0].image}
