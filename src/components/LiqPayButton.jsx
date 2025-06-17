@@ -10,7 +10,7 @@ const LiqPayButton = ({ bookingId, isCancelled }) => {
                 const token = localStorage.getItem('accessToken');
                 const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-                const res = await axios.get(`http://127.0.0.1:8000/cabinet/api/pay-liqpay/${bookingId}/`, { headers });
+                const res = await axios.get(`https://my-django-project-7203.onrender.com/cabinet/api/pay-liqpay/${bookingId}/`, { headers });
 
                 const { data, signature } = res.data;
 
