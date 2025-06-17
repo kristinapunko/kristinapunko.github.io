@@ -5,7 +5,7 @@ const CabinetLayout = () => {
   return (
     <>
       <div>
-        <ul className="flex lg:flex-row flex-col lg:items-center lg:gap-[4vw] gap-5 lg:gap-8 m-12">
+        <ul className="flex lg:flex-row flex-col lg:items-center lg:gap-[4vw] gap-2 md:gap-5 lg:gap-8 mx-8 mt-4 md:m-12">
           <li>
             <NavLink
               to="likedTours" 
