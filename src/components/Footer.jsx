@@ -76,7 +76,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#361d32] text-[#f1e8e6]">
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-5 md:py-16">
         {footerSections.map((section) => (
           <ul key={section.title}>
             <h1 className="mb-1 font-semibold">{section.title}</h1>
@@ -91,7 +91,7 @@ const Footer = () => {
           </ul>
         ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-sm pb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-10 text-center md:pt-2 text-sm pb-4 md:pb-8">
         <span>© 2025 Всі права захищено.</span>
         <span>Туристична агенція</span>
         <div className="text-[#f55951]">
