@@ -142,14 +142,14 @@ const AgencyReviews = () => {
 
   return (
     <main>
-      <h1 className="text-3xl font-semibold text-[#361d32] text-center my-6 lg:my-12">
+      <h1 className="text-2xl md:text-3xl font-semibold text-[#361d32] text-center my-9 lg:my-12">
         Відгуки про турагенство
       </h1>
       {agencyReviews.length > 0 ? (
         agencyReviews.map((agencyReview) => (
           <div
             key={agencyReview.id}
-            className="w-[80%] mx-auto p-4 sm:p-5 shadow-md bg-[#f1e8e6]/60 rounded-lg text-left border border-[#edd2cb]/50 mb-4"
+            className="w-[90%] md:w-[80%] mx-auto p-4 sm:p-5 shadow-md bg-[#f1e8e6]/60 rounded-lg text-left border border-[#edd2cb]/50 mb-4"
           >
             <div className="flex justify-between mb-1">
               <p className="text-md sm:text-lg font-semibold text-[#361d32]">{agencyReview.user_name}</p>
@@ -241,7 +241,7 @@ const AgencyReviews = () => {
             )}
 
             {reply[agencyReview.id] && reply[agencyReview.id].length > 0 ? (
-              <div className="w-[80%] mx-auto my-6">
+              <div className="md:w-[80%] mx-auto my-6">
                 <p className="text-[#f55951] text-center font-bold text-lg mt-2 sm:mt-4">Відповіді</p>
                 {reply[agencyReview.id].map((rep) => (
                   <div key={rep.id} className="border-2 border-[#f1e8e6] rounded-md p-4 mt-2">
@@ -273,7 +273,7 @@ const AgencyReviews = () => {
       )}
 
       {user && (
-        <div className="w-[80%] mx-auto mt-4 sm:mt-6 text-left bg-white p-3 sm:p-5 rounded-lg shadow-md">
+        <div className="w-[90%] md:w-[80%] mx-auto mt-4 sm:mt-6 text-left bg-white p-3 sm:p-5 rounded-lg shadow-md">
           <h3 className="text-lg font-semibold text-[#543c52] mb-2">
             {editingReview ? 'Редагувати відгук' : 'Додати відгук'}
           </h3>
