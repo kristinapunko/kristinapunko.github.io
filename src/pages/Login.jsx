@@ -66,7 +66,7 @@ const Login = () => {
     };
     return (
         <div>
-            <div className="bg-[#543c52]/50 border-[#edd2cb] rounded-2xl py-4 px-8 md:py-8 md:px-16 shadow-lg backdrop-blur-sm relative">
+            <div className="bg-[#543c52]/50 border-[#edd2cb] rounded-2xl mx-6 py-8 px-8 md:px-16 shadow-lg backdrop-blur-sm relative">
                 <h1 className="text-3xl md:text-4xl text-white font-bold text-center mb-4 md:mb-8">Login</h1>
                 {error && <p className="text-red-500 text-lg text-center">{error}</p>} 
                 {successMessage && <p className="text-green-500 text-center ">{successMessage}</p>} 
